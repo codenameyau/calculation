@@ -15,9 +15,17 @@ class TestCalculation(unittest.TestCase):
         pass
 
     def test_calculate(self):
-        steps = calc.calculate(8, 4)
-        self.assertEqual(steps, {})
+        results = calc.calculate(8, 4)
 
+        # Assert results is a dictionary
+        self.assertEqual(type(results), dict)
+        self.assertEqual(len(results), 4)
+
+        # Assert calculations are keys
+        self.assertTrue(results.has_key(12))
+        self.assertTrue(results.has_key(4))
+        self.assertTrue(results.has_key(-4))
+        self.assertTrue(results.has_key(32))
 
 if __name__ == '__main__':
     unittest.main()
