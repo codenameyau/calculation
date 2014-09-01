@@ -9,22 +9,29 @@ def calculate(a, b, repeat=False):
     Public: (Integer, Integer) -> Dictionary
     Performs calculation on 'a' and 'b'
     """
-    steps = {}
-    # Calculate addition
-    result = a + b
-    steps[result] = []
-    steps[result].append((a, '+', b))
+    results = {}
 
-    # Calculate subtraction 1
-    result = a - b
-    steps[result] = []
-    steps[result].append((a, '+', b))
+    # Addition
+    value = a + b
+    create_result(results, value)
+    results[value].append((a, '+', b))
 
-    # Calculate subtraction 2
+    # Subtraction 1
+    value = a - b
+    create_result(results, value)
+    results[value].append((a, '-', b))
 
-    # Calculate multiplication
+    # Subtraction 2
+    value = b - a
+    create_result(results, value)
+    results[value].append((b, '-', a))
 
-    return steps
+    # Multiplication
+    value = a * b
+    create_result(results, value)
+    results[value].append((a, '*', b))
+    return results
+
 
 def find_combinations(target, numbers):
     combinations = []
@@ -32,4 +39,10 @@ def find_combinations(target, numbers):
         current = numbers.pop(0)
     return combinations
 
-def push_results(results, a, b, op):
+
+def create_result(results, value):
+    """
+    Internal: (Dictionary, Integer) -> List
+    """
+    if value not in results:
+        results[value] = []
