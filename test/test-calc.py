@@ -2,9 +2,12 @@
 calc.py
 MIT License (c) 2014
 codenameyau.github.io
+
+Run in 'calculation/' directory:
+nosetests
 """
+from calc import calc
 import unittest
-import calc
 
 class TestCalculation(unittest.TestCase):
 
