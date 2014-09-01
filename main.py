@@ -26,7 +26,7 @@ def main():
 
     # Search for combinations
     if args.n:
-        print calc.find_combinations(args.n, args.numbers)
+        calc.find_target(args.n, args.numbers)
 
 if __name__ == '__main__':
     main()
