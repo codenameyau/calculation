@@ -49,11 +49,12 @@ def find_target(target, numbers):
     # Recursively calculate rest of combinations
     while numbers:
         current = numbers.pop(0)
+        temp_results = results.copy()
         for num in results:
-            combos = results[num]
-            temp = calculate(current, num)
+            result = calculate(current, num)
+            append_results(temp_results, result)
             print current, num
-            print temp
+            print temp_results
             print
 
     return combinations
@@ -65,3 +66,14 @@ def create_result(results, value):
     """
     if value not in results:
         results[value] = []
+
+
+def append_results(original, new):
+    """
+    Internal: (Dictionary, Dictionary)
+    """
+    for key in new:
+        if key in original:
+            original[key].append(new[key])
+        else:
+            original[key] = [new[key]]
